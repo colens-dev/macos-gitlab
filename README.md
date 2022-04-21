@@ -4,6 +4,7 @@ In case you often forget about your opened MRs or MRs on which you are assigned 
 
 Look how pretty it is :heart_eyes:
 
+![App preview](./images/gitlab_integration_app_preview.png)
 
 
 App is simple and has some basic features are:

@@ -26,11 +26,14 @@ class GitLabApp(rumps.App):
 
     def __setup_menu(self):
         self.menu.clear()
+        username_in_brackets = ''
+        if self.config.get("username", ''):
+            username_in_brackets = '(' + self.config.get("username", '') + ')'
         self.menu = [
             "My MRs",
             "For review",
             "Preferences",
-            rumps.MenuItem('GitLab Username', icon="icons/settings.png", callback=self.gitlab_username),
+            rumps.MenuItem('GitLab Username ' + username_in_brackets, icon="icons/settings.png", callback=self.gitlab_username),
             rumps.MenuItem('GitLab Token', icon="icons/settings.png", callback=self.gitlab_token),
             rumps.MenuItem('Quit', callback=rumps.quit_application)
         ]
@@ -72,7 +75,7 @@ class GitLabApp(rumps.App):
         token = self.config.get('token')
 
         ####################################
-        # For review
+        # Opened MRs for review
         ####################################
         try:
             opened_mrs = gitlab.get_opened_merge_requests(username=username, token=token)
@@ -103,7 +106,6 @@ class GitLabApp(rumps.App):
         if len(my_mrs) == 0:
             menu_item = rumps.MenuItem("Start creating something cool :)", icon="icons/edit.png")
             self.menu.insert_after('My MRs', menu_item)
-            return
         else:
             # Add links to MRs in menu
             for mr in my_mrs:
@@ -114,10 +116,10 @@ class GitLabApp(rumps.App):
         total_mrs = len(opened_mrs + my_mrs)
         if total_mrs > 0:
             self.title = str(len(opened_mrs + my_mrs))
-        if total_mrs > 10:
-            self.title = '10+'
         else:
             self.title = ''
+        if total_mrs > 10:
+            self.title = '10+'
 
 
     def __set_title_error(self):
