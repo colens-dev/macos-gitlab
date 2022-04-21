@@ -2,9 +2,12 @@
 
 In case you often forget about your opened MRs or MRs on which you are assigned as a reviewer this app comes to the rescue (hey all you mob/pair programming advocates look other way :zany_face: ). Purpose of the app is to present number of opened MRs in MacOS top bar and to enable quick navigation to MRs.
 
-Look how pretty it is :heart_eyes:
+:star2: Look how pretty it is :heart_eyes:
 
-![App preview](./images/gitlab_integration_app_preview.png)
+<p align="center">
+    <img src="./images/gitlab_integration_app_preview.png" alt="drawing" width="400"/>
+</p>
+<!-- ![App preview](./images/gitlab_integration_app_preview.png) -->
 
 
 App is simple and has some basic features are:
