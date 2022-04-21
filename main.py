@@ -69,8 +69,6 @@ class GitLabApp(rumps.App):
     def check_merge_requests(self, _):
         # Clear menu items and populate it again
         self.__setup_menu()
-
-        # TODO: Do refactoring - logging, switch to having single config option and add GitLab URL to it
         username = self.config.get('username')
         token = self.config.get('token')
 

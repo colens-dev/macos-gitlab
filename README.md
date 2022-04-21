@@ -13,5 +13,8 @@ App is simple and has some basic features are:
 - List all MRs on which you are assigned as a reviewer and enable navigation
 - Enable setup of GitLab username and token for API access
 
-TODO:
-- Add app on startup, Setup token ...
+## TODO
+- Update README with all details (Add app on startup, Setup token ...) and make it nicer
+- Add tests, lints, CI
+- Publish to brew or somewhere else
+- ...
