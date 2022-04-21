@@ -13,8 +13,17 @@ App is simple and has some basic features are:
 - List all MRs on which you are assigned as a reviewer and enable navigation
 - Enable setup of GitLab username and token for API access
 
+
+# Setup
+
+## Create GitLab token
+For creating GitLab personal token check this [guide](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token)
+
+## Launch on startup
+For launching GitLab integration app on startup check this [guide](https://support.apple.com/guide/mac-help/open-items-automatically-when-you-log-in-mh15189/mac)
+
 ## TODO
-- Update README with all details (Development, startup, Add app on startup, Setup token ...) and make it nicer
+- Update README with all details (Development, startup, Setup token ...) and make it nicer
 - Refactoring, logging, consider switching to single json config (and single menu item)
 - Add tests, lints, CI
 - Publish to brew or somewhere else
