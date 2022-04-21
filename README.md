@@ -10,7 +10,7 @@ In case you often forget about your opened MRs or MRs on which you are assigned 
 <!-- ![App preview](./images/gitlab_integration_app_preview.png) -->
 
 
-App is simple and has some basic features are:
+App is simple and has some basic features:
 - Present total number of your MRs and MRs where you are assigned as a reviewer within top bar
 - List all your MRs and enable navigation
 - List all MRs on which you are assigned as a reviewer and enable navigation
