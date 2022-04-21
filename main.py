@@ -2,7 +2,7 @@ from gc import callbacks
 import json
 import webbrowser
 
-from wrappers import gitlab
+from wrappers.gitlab import GitLabWrapper, GitLabException
 from rumps import *
 
 
@@ -11,6 +11,7 @@ class GitLabApp(rumps.App):
     def __init__(self):
         super(GitLabApp, self).__init__("GitLab Integration")
         self.config = self.__get_config()
+        self.gitlab_wrapper = GitLabWrapper(url=self.config.get('url', ''))
         self.icon = "icons/gitlab.png"
         self.__setup_menu()
         debug_mode(True)
@@ -32,6 +33,7 @@ class GitLabApp(rumps.App):
             "For review",
             "Preferences",
             rumps.MenuItem('GitLab Username ' + username_in_brackets, icon="icons/settings.png", callback=self.gitlab_username),
+            rumps.MenuItem('GitLab URL', icon="icons/settings.png", callback=self.gitlab_url),
             rumps.MenuItem('GitLab Token', icon="icons/settings.png", callback=self.gitlab_token),
             rumps.MenuItem('Quit', callback=rumps.quit_application)
         ]
@@ -58,6 +60,18 @@ class GitLabApp(rumps.App):
             f.write(json.dumps(self.config))
         self.check_merge_requests('')
 
+    def gitlab_url(self, sender):
+        previous_url = ""
+        if self.config:
+            previous_url = self.config.get('url', '')
+        url = Window("GitLab URL", default_text=previous_url).run()
+        if url.text:
+            self.config['url'] = url.text
+        with open('config.json', 'w+') as f:
+            f.write(json.dumps(self.config))
+        self.gitlab_wrapper.url = url.text
+        self.check_merge_requests('')
+
     def open_link(self, sender):
         webbrowser.open_new_tab(sender.key) 
 
@@ -72,8 +86,8 @@ class GitLabApp(rumps.App):
         # Opened MRs for review
         ####################################
         try:
-            opened_mrs = gitlab.get_opened_merge_requests(username=username, token=token)
-        except gitlab.GitLabException:
+            opened_mrs = self.gitlab_wrapper.get_opened_merge_requests(username=username, token=token)
+        except GitLabException:
             self.__set_title_error()
             return
         
@@ -91,8 +105,8 @@ class GitLabApp(rumps.App):
         # My MRs
         ####################################
         try:
-            my_mrs = gitlab.get_my_merge_requests(username=username, token=token)
-        except gitlab.GitLabException:
+            my_mrs = self.gitlab_wrapper.get_my_merge_requests(username=username, token=token)
+        except GitLabException:
             self.__set_title_error()
             return
 
