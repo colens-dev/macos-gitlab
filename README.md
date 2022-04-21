@@ -15,7 +15,7 @@ App is simple and has some basic features are:
 
 ## TODO
 - Update README with all details (Development, startup, Add app on startup, Setup token ...) and make it nicer
-- Refactoring, logging, switch to having single json config and add GitLab URL to it to be able to use it with cloud also
+- Refactoring, logging, consider switching to single json config (and single menu item)
 - Add tests, lints, CI
 - Publish to brew or somewhere else
 - ...
