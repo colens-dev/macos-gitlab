@@ -1,11 +1,9 @@
 from gc import callbacks
 import json
-import requests
 import webbrowser
 
 from wrappers import gitlab
 from rumps import *
-from datetime import datetime
 
 
 class GitLabApp(rumps.App):
@@ -38,7 +36,6 @@ class GitLabApp(rumps.App):
             rumps.MenuItem('Quit', callback=rumps.quit_application)
         ]
 
-    # @clicked('GitLab Token')
     def gitlab_token(self, sender):
         previous_token = ""
         if self.config:
@@ -50,7 +47,6 @@ class GitLabApp(rumps.App):
             f.write(json.dumps(self.config))
         self.check_merge_requests('')
 
-    # @clicked('GitLab Username')
     def gitlab_username(self, sender):
         previous_username = ""
         if self.config:
