@@ -15,7 +15,7 @@ OPTIONS = {
 
 setup(
     app=APP,
-    name='GitLab Integration',
+    name='macos-gitlab',
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
     setup_requires=['py2app'], install_requires=['rumps']
