@@ -5,6 +5,7 @@ name: release
 
 on:
   release:
+    types: [created]
     branches: [ main ]
 
 permissions:
