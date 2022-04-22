@@ -4,14 +4,12 @@
 name: release
 
 on:
-  push:
-    branches: [ main ]
   release:
     types: [created]
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   release:
