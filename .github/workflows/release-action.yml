@@ -30,4 +30,4 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: dist/macos-gitlab.app
+        files: macos-gitlab.app
