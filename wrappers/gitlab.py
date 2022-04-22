@@ -1,7 +1,9 @@
 import requests
 
+
 class GitLabException(Exception):
-        pass
+    pass
+
 
 class GitLabWrapper:
 
@@ -14,21 +16,25 @@ class GitLabWrapper:
 
         headersAuth = {'Authorization': 'Bearer ' + token}
         query = {
-            'reviewer_username':username,
+            'reviewer_username': username,
             'view': 'simple',
             'scope': 'all',
-            'state':'opened',
+            'state': 'opened',
         }
-        
+
         try:
-            response = requests.get(f'{self.url}/api/v4/merge_requests', params=query, headers=headersAuth, verify=False)
-        except requests.exceptions.RequestException as e:
+            response = requests.get(
+                f'{self.url}/api/v4/merge_requests',
+                params=query,
+                headers=headersAuth,
+                verify=False
+            )
+        except requests.exceptions.RequestException:
             raise GitLabException
 
         if not response.ok:
             raise GitLabException
         return response.json()
-
 
     def get_my_merge_requests(self, username, token):
         if not username or not token:
@@ -39,14 +45,19 @@ class GitLabWrapper:
             'author_username': username,
             'view': 'simple',
             'scope': 'all',
-            'state':'opened',
+            'state': 'opened',
         }
-        
+
         try:
-            response = requests.get(f'{self.url}/api/v4/merge_requests', params=query, headers=headersAuth, verify=False)
-        except requests.exceptions.RequestException as e:
+            response = requests.get(
+                f'{self.url}/api/v4/merge_requests',
+                params=query,
+                headers=headersAuth,
+                verify=False
+            )
+        except requests.exceptions.RequestException:
             raise GitLabException
 
         if not response.ok:
-            raise GitLabException    
+            raise GitLabException
         return response.json()

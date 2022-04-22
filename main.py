@@ -1,9 +1,8 @@
-from gc import callbacks
 import json
 import webbrowser
 
 from wrappers.gitlab import GitLabWrapper, GitLabException
-from rumps import *
+import rumps
 
 
 class GitLabApp(rumps.App):
@@ -14,13 +13,13 @@ class GitLabApp(rumps.App):
         self.gitlab_wrapper = GitLabWrapper(url=self.config.get('url', ''))
         self.icon = "icons/gitlab.png"
         self.__setup_menu()
-        debug_mode(True)
+        rumps.debug_mode(True)
 
     def __get_config(self):
         try:
             with open('config.json', 'r') as f:
                 return json.load(f)
-        except OSError as e:
+        except OSError:
             return {}
 
     def __setup_menu(self):
@@ -32,9 +31,21 @@ class GitLabApp(rumps.App):
             "My MRs",
             "For review",
             "Preferences",
-            rumps.MenuItem('GitLab Username ' + username_in_brackets, icon="icons/settings.png", callback=self.gitlab_username),
-            rumps.MenuItem('GitLab URL', icon="icons/settings.png", callback=self.gitlab_url),
-            rumps.MenuItem('GitLab Token', icon="icons/settings.png", callback=self.gitlab_token),
+            rumps.MenuItem(
+                'GitLab Username ' + username_in_brackets,
+                icon="icons/settings.png",
+                callback=self.gitlab_username
+            ),
+            rumps.MenuItem(
+                'GitLab URL',
+                icon="icons/settings.png",
+                callback=self.gitlab_url
+            ),
+            rumps.MenuItem(
+                'GitLab Token',
+                icon="icons/settings.png",
+                callback=self.gitlab_token
+            ),
             rumps.MenuItem('Quit', callback=rumps.quit_application)
         ]
 
@@ -42,7 +53,7 @@ class GitLabApp(rumps.App):
         previous_token = ""
         if self.config:
             previous_token = self.config.get('token', '')
-        token = Window("GitLab Token",default_text=previous_token).run()
+        token = rumps.Window("GitLab Token", default_text=previous_token).run()
         if token.text:
             self.config['token'] = token.text
         with open('config.json', 'w+') as f:
@@ -53,7 +64,11 @@ class GitLabApp(rumps.App):
         previous_username = ""
         if self.config:
             previous_username = self.config.get('username', '')
-        username = Window("GitLab Username", default_text=previous_username).run()
+        username = rumps.Window(
+            "GitLab Username",
+            default_text=previous_username
+        ).run()
+
         if username.text:
             self.config['username'] = username.text
         with open('config.json', 'w+') as f:
@@ -64,7 +79,7 @@ class GitLabApp(rumps.App):
         previous_url = ""
         if self.config:
             previous_url = self.config.get('url', '')
-        url = Window("GitLab URL", default_text=previous_url).run()
+        url = rumps.Window("GitLab URL", default_text=previous_url).run()
         if url.text:
             self.config['url'] = url.text
         with open('config.json', 'w+') as f:
@@ -73,9 +88,9 @@ class GitLabApp(rumps.App):
         self.check_merge_requests('')
 
     def open_link(self, sender):
-        webbrowser.open_new_tab(sender.key) 
+        webbrowser.open_new_tab(sender.key)
 
-    @timer(30)
+    @rumps.timer(30)
     def check_merge_requests(self, _):
         # Clear menu items and populate it again
         self.__setup_menu()
@@ -86,11 +101,14 @@ class GitLabApp(rumps.App):
         # Opened MRs for review
         ####################################
         try:
-            opened_mrs = self.gitlab_wrapper.get_opened_merge_requests(username=username, token=token)
+            opened_mrs = self.gitlab_wrapper.get_opened_merge_requests(
+                username=username,
+                token=token
+            )
         except GitLabException:
             self.__set_title_error()
             return
-        
+
         # Set status in case no MRs are found
         if len(opened_mrs) == 0:
             menu_item = rumps.MenuItem("All done!", icon="icons/review.png")
@@ -98,26 +116,42 @@ class GitLabApp(rumps.App):
         else:
             # Add links to MRs in menu
             for mr in opened_mrs:
-                menu_item = rumps.MenuItem(mr.get('title'), callback=self.open_link, key=mr.get('web_url'), icon="icons/review.png")
+                menu_item = rumps.MenuItem(
+                    mr.get('title'),
+                    callback=self.open_link,
+                    key=mr.get('web_url'),
+                    icon="icons/review.png"
+                )
                 self.menu.insert_after('For review', menu_item)
 
         ####################################
         # My MRs
         ####################################
         try:
-            my_mrs = self.gitlab_wrapper.get_my_merge_requests(username=username, token=token)
+            my_mrs = self.gitlab_wrapper.get_my_merge_requests(
+                username=username,
+                token=token
+            )
         except GitLabException:
             self.__set_title_error()
             return
 
         # Set status in case no MRs are found
         if len(my_mrs) == 0:
-            menu_item = rumps.MenuItem("Start creating something cool :)", icon="icons/edit.png")
+            menu_item = rumps.MenuItem(
+                "Start creating something cool :)",
+                icon="icons/edit.png"
+            )
             self.menu.insert_after('My MRs', menu_item)
         else:
             # Add links to MRs in menu
             for mr in my_mrs:
-                menu_item = rumps.MenuItem(mr.get('title')+' ', callback=self.open_link, key=mr.get('web_url'), icon="icons/edit.png")
+                menu_item = rumps.MenuItem(
+                    mr.get('title')+' ',
+                    callback=self.open_link,
+                    key=mr.get('web_url'),
+                    icon="icons/edit.png"
+                )
                 self.menu.insert_after('My MRs', menu_item)
 
         # Add number of MRs to title
@@ -129,9 +163,9 @@ class GitLabApp(rumps.App):
         if total_mrs > 10:
             self.title = '10+'
 
-
     def __set_title_error(self):
         self.title = 'x'
+
 
 if __name__ == '__main__':
     app = GitLabApp()
