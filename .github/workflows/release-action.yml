@@ -28,7 +28,7 @@ jobs:
     - name: Build artifact
       run: python setup.py py2app
     - name: Zip artifact
-      run: zip release.zip ./dist/macos-gitlab.app
+      run: zip -r release.zip ./dist/macos-gitlab.app
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
