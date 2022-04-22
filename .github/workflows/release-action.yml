@@ -4,6 +4,8 @@
 name: release
 
 on:
+  push:
+    branches: [ main ]
   release:
     types: [created]
     branches: [ main ]
@@ -26,9 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Build artifact
-      run: |
-        python setup.py py2app
+      run: python setup.py py2app
+    - name: Zip artifact
+      run: zip release.zip ./dist/macos-gitlab.app
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: macos-gitlab.app
+        files: release.zip
