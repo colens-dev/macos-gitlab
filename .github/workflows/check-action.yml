@@ -15,11 +15,11 @@ permissions:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: macos-12
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
+    - name: Set up Python 3.7
       uses: actions/setup-python@v3
       with:
         python-version: "3.7"
