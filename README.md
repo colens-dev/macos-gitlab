@@ -1,6 +1,6 @@
 # **GitLab Merge Requests (menu bar app for Mac)**
 
-`TODO: badges`
+[![build](https://github.com/colens-dev/gitlab-integration/actions/workflows/python-app.yml/badge.svg)](https://github.com/colens-dev/gitlab-integration/actions/workflows/python-app.yml)
 
 GitLab Merge Requests is a MacOS menu bar app that shows number of opened MRs (owned and assigned as a reviewer) and enables quick navigation to specific MR on GitLab.
 
