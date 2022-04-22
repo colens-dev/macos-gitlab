@@ -62,7 +62,7 @@ For setting up launch on startup check this [guide](https://support.apple.com/g
 
 ## **License**
 
-[MIT](LICENSE.md)
+- [MIT](LICENSE.md)
 
 ## **More TODO**
 
