@@ -97,9 +97,6 @@ class GitLabApp(rumps.App):
         username = self.config.get('username')
         token = self.config.get('token')
 
-        ####################################
-        # Opened MRs for review
-        ####################################
         try:
             opened_mrs = self.gitlab_wrapper.get_opened_merge_requests(
                 username=username,
@@ -124,9 +121,6 @@ class GitLabApp(rumps.App):
                 )
                 self.menu.insert_after('For review', menu_item)
 
-        ####################################
-        # My MRs
-        ####################################
         try:
             my_mrs = self.gitlab_wrapper.get_my_merge_requests(
                 username=username,
