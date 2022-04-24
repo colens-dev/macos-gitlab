@@ -76,9 +76,3 @@ For setting up launch on startup check this [guide](https://support.apple.com/g
 
 - [MIT](LICENSE.md)
 
-## **More TODO**
-
-- Finish up README
-- Refactoring, logging, consider switching to single json config (and single menu item)
-- Add tests, add releases
-- ...
