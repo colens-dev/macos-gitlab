@@ -68,7 +68,7 @@ If you want to have this app active all the time you should configure your OS to
 
 For setting up launch on startup check this [guide](https://support.apple.com/guide/mac-help/open-items-automatically-when-you-log-in-mh15189/mac)
 
-## Development
+## Contribution and development
 
 `TODO: Add development details, contribution details`
 
