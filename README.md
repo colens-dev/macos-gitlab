@@ -30,7 +30,18 @@ GitLab Merge Requests is a MacOS menu bar app that shows number of opened MRs (o
 
 ## Installing
 
-`TODO: Add once CI added and releases automatically created`
+Currently only mannual installation is supported and have in mind that the app is not verified by Apple so some additional steps are required.
+
+Steps:
+- Download `release.zip` file from the latest [release](https://github.com/colens-dev/macos-gitlab/releases)
+- Extract files from the `.zip` archive
+- Move extracted file to your Applications folder
+- Hold Control, click on the application file and once the menu popup is shown click on `Open`
+- Now alert popup should appear
+- If you see the option to open the application go ahead and open it 🎉
+- In case you didn't get the option to open the application in the first try click on `Cancel`
+    - Hold control and click on the app again, choose `Open` and a new alert should appear with the option to open the application 🎉
+- After getting the app to open once, you shouldn't have any more problems in the future. Please refer to [Apple's documentation](https://support.apple.com/en-au/guide/mac-help/mh40616/mac) for further reference
 
 ## Setup
 
