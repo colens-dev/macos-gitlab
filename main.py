@@ -10,7 +10,7 @@ class GitLabApp(rumps.App):
     def __init__(self):
         super(GitLabApp, self).__init__("GitLab Integration")
         self.config = self.__get_config()
-        self.gitlab_wrapper = GitLabWrapper(url=self.config.get('url', ''))
+        self.gitlab_wrapper = GitLabWrapper(url=self.config.get('url', None))
         self.icon = "icons/gitlab.png"
         self.__setup_menu()
         rumps.debug_mode(True)
