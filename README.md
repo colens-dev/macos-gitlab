@@ -69,7 +69,7 @@ If you want to have this app active all the time you should configure your OS to
 For setting up launch on startup check this [guide](https://support.apple.com/guide/mac-help/open-items-automatically-when-you-log-in-mh15189/mac)
 
 ## Contributing
-First make sure you've checked details within the [CONTRIBUTION.md](https://github.com/colens-dev/macos-gitlab/edit/main/CONTRIBUTING.md) file.
+First make sure you've checked details within the [CONTRIBUTING.md](https://github.com/colens-dev/macos-gitlab/blob/main/CONTRIBUTING.md) file.
 
 ### Development
 Steps for development setup are presented below:
