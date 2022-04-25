@@ -68,9 +68,26 @@ If you want to have this app active all the time you should configure your OS to
 
 For setting up launch on startup check this [guide](https://support.apple.com/guide/mac-help/open-items-automatically-when-you-log-in-mh15189/mac)
 
-## Contribution and development
+## Contributing
+First make sure you've checked details within the [CONTRIBUTION.md](https://github.com/colens-dev/macos-gitlab/edit/main/CONTRIBUTING.md) file.
 
-`TODO: Add development details, contribution details`
+### Development
+Steps for development setup are presented below:
+
+- Clone the repo
+- Navigate to the repo root folder
+- run `make setup` to install all dev and prod dependencies (it uses [pip](https://pip.pypa.io/en/stable/))
+- You are ready to go 🥳 
+    - For example you are using [VSCode](https://code.visualstudio.com/) just start the debug while [main.py](https://github.com/colens-dev/macos-gitlab/blob/main/main.py) file is opened
+
+**How to run tests:**
+- From the root folder run `make test`
+
+**How to run lint:**
+- From the root folder run `make lint`
+
+You can also run `tests` and `lint` together by running `make check`
+
 
 ## **License**
 
