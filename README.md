@@ -90,7 +90,7 @@ You can also run `tests` and `lint` together by running `make check`
 
 
 #### Roadmap
-- Currently these are all the features we need but in case we and some more people find something else useful we can build it up, also if this app shows useful to certain amount of people we could switch it to [Electron](https://www.electronjs.org/) and make it available for all platforms (Mac, Windows, Linux)
+- Currently these are all the features we need but in case we and some more people find something else useful we can build it up. If this app shows useful to certain amount of people or we find that we need some options which are not available in this super awesome and simple lib ([rumps](https://rumps.readthedocs.io/en/latest/)) we could switch it to [Electron](https://www.electronjs.org/) and make it available for all platforms (Mac, Windows, Linux)
 
 ## **License**
 
