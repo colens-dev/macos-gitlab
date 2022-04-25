@@ -89,7 +89,12 @@ Steps for development setup are presented below:
 You can also run `tests` and `lint` together by running `make check`
 
 
+#### Roadmap
+- Currently these are all the features we need but in case we and some more people find something else useful we can build it up, also if this app shows useful to certain amount of people we could switch it to [Electron](https://www.electronjs.org/) and make it available for all platforms (Mac, Windows, Linux)
+
 ## **License**
 
 - [MIT](LICENSE.md)
+
+
 
