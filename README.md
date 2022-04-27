@@ -78,7 +78,7 @@ Steps for development setup are presented below:
 - Navigate to the repo root folder
 - run `make setup` to install all dev and prod dependencies (it uses [pip](https://pip.pypa.io/en/stable/))
 - You are ready to go 🥳 
-    - For example you are using [VSCode](https://code.visualstudio.com/) just start the debug while [main.py](https://github.com/colens-dev/macos-gitlab/blob/main/main.py) file is opened
+    - For example if you are using [VSCode](https://code.visualstudio.com/) just start the debug while [main.py](https://github.com/colens-dev/macos-gitlab/blob/main/main.py) file is opened
 
 **How to run tests:**
 - From the root folder run `make test`
